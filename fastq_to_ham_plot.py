@@ -3,7 +3,8 @@
 
 # Script must ultimately be contained in one fluid .py file merged via GitHub
 
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 f = open('CTGATC.fastq', 'r')
 
@@ -44,4 +45,9 @@ for j in range(len(seq_data)):
 
 
 #Make some kind of plot that contains the data you've calculated.
-
+def graph(diffs):
+	sns.set_style('ticks')
+	sns.set_palette("husl")
+	sns.distplot(diffs,axlabel="Hamming Distance Frequency")
+	sns.despine(offset=10, trim=True)
+	plt.show()
