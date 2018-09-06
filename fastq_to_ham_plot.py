@@ -29,9 +29,10 @@ def getSeqs(fastq_file):
 def hamDist(str1, str2):
    #Count the # of differences between equal length strings str1 and str2
 	diffs = 0
-	for i in range(len(str1)):
-		if str1[i] != str2[i]:
-			diffs = diffs +1
+	if len(str1) == len(str2):
+		for i in range(len(str1)):
+			if str1[i] != str2[i]:
+				diffs = diffs +1
 	return diffs
 
 orig_data = getSeqs(f)
@@ -42,7 +43,6 @@ for j in range(len(seq_data)):
 		for i in range((j+1),len(seq_data)):
 			if seq_data[i] != seq_data[j]:
 				output.append(hamDist(seq_data[j],seq_data[i]))
-
 
 #Make some kind of plot that contains the data you've calculated.
 def graph(diffs):
