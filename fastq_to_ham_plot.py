@@ -35,6 +35,14 @@ def hamDist(str1, str2):
 				diffs = diffs +1
 	return diffs
 
+#Make some kind of plot that contains the data you've calculated.
+def graph(diffs):
+	sns.set_style('ticks')
+	sns.set_palette("husl")
+	sns.distplot(diffs,axlabel="Hamming Distance Frequency")
+	sns.despine(offset=10, trim=True)
+	plt.show()
+
 orig_data = getSeqs(f)
 #orig_data = {"#1":"AAGGTTNTC","#2":"ATGTTTNTC", "#3":"ATGTTTGTC"}
 seq_data = list(orig_data.values())
@@ -43,11 +51,5 @@ for j in range(len(seq_data)):
 		for i in range((j+1),len(seq_data)):
 			if seq_data[i] != seq_data[j]:
 				output.append(hamDist(seq_data[j],seq_data[i]))
+graph(output)
 
-#Make some kind of plot that contains the data you've calculated.
-def graph(diffs):
-	sns.set_style('ticks')
-	sns.set_palette("husl")
-	sns.distplot(diffs,axlabel="Hamming Distance Frequency")
-	sns.despine(offset=10, trim=True)
-	plt.show()
